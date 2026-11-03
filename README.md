@@ -143,20 +143,17 @@ Ejercicio 10/
 │   └── Informe_Ejecutivo_CodificaMed.md   # Informe técnico completo en Markdown
 │
 ├── app/                                   # Código fuente de la aplicación
-│   ├── __init__.py
 │   ├── main.py                            # Endpoints REST y servidor FastAPI
 │   ├── config.py                          # Configuración y variables de entorno
 │   ├── evaluador.py                       # Módulo de cálculo de métricas formales
 │   │
 │   ├── pipeline/                          # Pipeline de Procesamiento de Lenguaje Natural
-│   │   ├── __init__.py
 │   │   ├── preprocesamiento.py            # Normalización y expansión de siglas
 │   │   ├── negacion.py                    # Algoritmo NegEx para detección de aserción
 │   │   ├── buscador_cie10.py              # Mecanismo RAG sobre catálogo CIE-10
 │   │   └── orquestador.py                 # Orquestación del flujo clínico
 │   │
 │   ├── llm/                               # Conectores desacoplados de modelos
-│   │   ├── __init__.py
 │   │   ├── base.py                        # Interfaz abstracta ProveedorLLM
 │   │   ├── ollama.py                      # Conector para Ollama local (JSON Schema)
 │   │   ├── gemini.py                      # Conector para Google Gemini API
