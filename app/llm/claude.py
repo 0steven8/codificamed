@@ -14,14 +14,14 @@ class ProveedorClaude(ProveedorLLM):
         self.modelo = modelo or settings.claude_model or "sonnet-5.5"
 
     def _obtener_candidatos(self) -> list[str]:
-        # Modelos Claude: Sonnet 5.5, Haiku 5.5, Opus 5.5
+        # Modelos Claude: Opus 5.5, Sonnet 5.5, Haiku 5.5
         m = self.modelo.lower()
-        if "haiku" in m:
-            return ["haiku-5.5", "claude-haiku-5.5", "sonnet-5.5"]
-        elif "opus" in m:
-            return ["opus-5.5", "claude-opus-5.5", "sonnet-5.5"]
+        if "sonnet" in m:
+            return ["sonnet-5.5", "claude-sonnet-5.5", "opus-5.5", "haiku-5.5"]
+        elif "haiku" in m:
+            return ["haiku-5.5", "claude-haiku-5.5", "sonnet-5.5", "opus-5.5"]
         else:
-            return ["sonnet-5.5", "claude-sonnet-5.5", "haiku-5.5"]
+            return ["opus-5.5", "claude-opus-5.5", "sonnet-5.5", "haiku-5.5"]
 
     def codificar(self, prompt_sistema: str, prompt_usuario: str, esquema: dict) -> dict:
         # Envia peticion con especificacion Anthropic 2026-10-21

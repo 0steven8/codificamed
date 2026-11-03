@@ -15,14 +15,14 @@ class ProveedorOpenAI(ProveedorLLM):
         self.modelo = modelo or settings.openai_model or "gpt-6.1-terra"
 
     def _obtener_candidatos(self) -> list[str]:
-        # Modelos OpenAI: GPT-6.1 Terra, GPT-6 Luna, GPT-6.1 Sol
+        # Modelos OpenAI: GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna
         m = self.modelo.lower()
-        if "luna" in m:
-            return ["gpt-6-luna", "gpt-6.1-terra", "gpt-6.1-sol"]
-        elif "sol" in m:
+        if "sol" in m:
             return ["gpt-6.1-sol", "gpt-6.1-terra", "gpt-6-luna"]
+        elif "luna" in m:
+            return ["gpt-6-luna", "gpt-6.1-terra", "gpt-6.1-sol"]
         else:
-            return ["gpt-6.1-terra", "gpt-6-luna", "gpt-6.1-sol"]
+            return ["gpt-6.1-sol", "gpt-6.1-terra", "gpt-6-luna"]
 
     def codificar(self, prompt_sistema: str, prompt_usuario: str, esquema: dict) -> dict:
         # Envia solicitud structured outputs a OpenAI
