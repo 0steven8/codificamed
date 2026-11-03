@@ -32,6 +32,7 @@ desktop.ini
 
 # Recursos internos del estudiante (no suben al repositorio publico/docente)
 recursos_estudiante/
+docs
 
 # Video demostrativo si excede limites de Git (se entrega via enlace segun rubrica)
 video_demostracion.mp4
