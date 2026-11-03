@@ -352,6 +352,9 @@ async function cargarConfiguracion() {
     } else if (data.ollama && data.ollama.modelos_instalados && data.ollama.modelos_instalados.length > 0) {
       pill.className = "status-pill status-warn";
       text.innerText = `Ollama: Activo (${data.ollama.modelos_instalados[0]})`;
+    } else if (data.ollama && data.ollama.mensaje) {
+      pill.className = "status-pill status-warn";
+      text.innerText = data.ollama.mensaje;
     } else {
       pill.className = "status-pill status-warn";
       text.innerText = "Ollama: Servicio no detectado";
