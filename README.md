@@ -197,11 +197,11 @@ codificamed/
 
 Evaluación ejecutada sobre el conjunto de 10 casos clínicos del *Gold Standard* (46 diagnósticos clínicos anotados):
 
-| Métrica | Ollama Local (`llama3.1:latest`) | Google Gemini (`gemini-3.8-flash`) | Anthropic Claude (`sonnet-5.5`) |
+| Métrica | Ollama Local (`llama3.1:latest`) | Google Gemini (`gemini-3.8-flash`) |
 | :--- | :---: | :---: | :---: |
-| **Precisión (Precision)** | **88.20%** | **93.40%** | **94.10%** |
-| **Exhaustividad (Recall)** | **84.78%** | **90.20%** | **91.30%** |
-| **Valor-F1 (F1-Score)** | **86.45%** | **91.76%** | **92.68%** |
-| **Exactitud de Negación** | **94.50%** | **98.10%** | **98.50%** |
-| **Latencia Promedio / Caso** | **4.20 s** | **0.95 s** | **1.10 s** |
-| **Privacidad de Datos** | Total (Local sin salida externa) | Envío a Nube | Envío a Nube |
+| **Precisión (Precision)** | **88.20%** | **93.40%** |
+| **Exhaustividad (Recall)** | **84.78%** | **90.20%** |
+| **Valor-F1 (F1-Score)** | **86.45%** | **91.76%** |
+| **Exactitud de Negación** | **94.50%** | **98.10%** |
+| **Latencia Promedio / Caso** | **4.20 s** | **0.95 s** |
+| **Privacidad de Datos** | Total (Local sin salida externa) | Envío a Nube |
