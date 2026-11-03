@@ -852,12 +852,20 @@ function renderizarComparacion(data) {
   const localEl = document.getElementById("compLocalList");
   const localMeta = document.getElementById("compLocalMeta");
   if (localMeta) localMeta.innerText = `${loc.modelo_usado || "llama3.1"} · ${tLoc.toFixed(2)}s · ~${tkLoc} tokens`;
-  if (localEl) localEl.innerHTML = generarListaDiagnosticosHtml(loc.diagnosticos || []);
+  if (localEl) {
+    localEl.innerHTML = loc.error
+      ? `<div style="color: #dc2626; padding: 12px; font-size: 13px; background: #fef2f2; border-radius: 6px; border: 1px solid #fecaca;">${escaparHtml(loc.error)}</div>`
+      : generarListaDiagnosticosHtml(loc.diagnosticos || []);
+  }
 
   const apiEl = document.getElementById("compApiList");
   const apiMeta = document.getElementById("compApiMeta");
   if (apiMeta) apiMeta.innerText = `${api.proveedor_usado || "API Nube"} · ${tApi.toFixed(2)}s · ~${tkApi} tokens`;
-  if (apiEl) apiEl.innerHTML = generarListaDiagnosticosHtml(api.diagnosticos || []);
+  if (apiEl) {
+    apiEl.innerHTML = api.error
+      ? `<div style="color: #dc2626; padding: 12px; font-size: 13px; background: #fef2f2; border-radius: 6px; border: 1px solid #fecaca;">${escaparHtml(api.error)}</div>`
+      : generarListaDiagnosticosHtml(api.diagnosticos || []);
+  }
 }
 
 function generarListaDiagnosticosHtml(diags) {
