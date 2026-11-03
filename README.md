@@ -3,10 +3,8 @@
 **Institución:** Escuela Superior Politécnica de Chimborazo (ESPOCH)  
 **Facultad:** Facultad de Informática y Electrónica (FIE)  
 **Carrera:** Ingeniería en Software  
-**Cátedra:** Base de Conocimiento  
-**Docente:** Ing. Isaac Torres  
-**Versión:** 1.0.0 (Release Académico Final)
-
+**Materia:** Base de Conocimiento
+**Estudiante:** Steven Pico (7520)
 ---
 
 ## 1. Descripción del Proyecto
@@ -26,7 +24,7 @@ El desarrollo del proyecto se estructuró siguiendo las seis fases de la metodol
 3. **Ingeniería del Modelo:** Integración híbrida compuesta por:
    - Algoritmo de detección de aserción (NegEx adaptado al español clínico).
    - Mecanismo RAG de recuperación léxico-semántica sobre el catálogo CIE-10.
-   - Inferencia con modelos de lenguaje grandes (LLM) estructurados mediante esquemas JSON tipados. Admite ejecución local privada con **Ollama** (`llama3.1:latest`, `mistral:latest`, `qwen2.5-coder:latest`) y conectividad opcional a servicios en la nube (**Google Gemini**, **OpenAI ChatGPT**, **Anthropic Claude**).
+   - Inferencia con modelos de lenguaje grandes (LLM) estructurados mediante esquemas JSON tipados. Admite ejecución local privada con **Ollama** y conectividad opcional a servicios en la nube.
 4. **Aseguramiento de Calidad (QA):** Evaluación formal sobre un conjunto *Gold Standard* de 10 casos clínicos anotados, calculando métricas objetivas de Precisión, Exhaustividad (*Recall*), Valor-F1 (*F1-Score*) y Exactitud en la clasificación de negaciones.
 5. **Despliegue:** Arquitectura desacoplada con backend asíncrono en **FastAPI**, servidor de producción **Uvicorn** e interfaz web clínica responsiva sin dependencias externas pesadas, empaquetada con lanzador automatizado de un clic (`run_app.bat`).
 6. **Monitoreo y Mantenimiento:** Trazabilidad de latencia por etapa del pipeline, validación de evidencia textual para prevenir alucinaciones de códigos no fundamentados y diseño modular preparado para futuras actualizaciones del catálogo a CIE-11.
@@ -37,8 +35,8 @@ El desarrollo del proyecto se estructuró siguiendo las seis fases de la metodol
 
 - **Sistema Operativo:** Windows 10/11, Linux o macOS.
 - **Python:** Versión 3.10 o superior (recomendado 3.11 o 3.12).
-- **Entorno de IA Local (Recomendado):** [Ollama](https://ollama.com/) con el modelo `llama3.1:latest`, `mistral:latest` o `qwen2.5-coder:latest`.
-- **Servicios en la Nube (Opcional):** Clave de API para Google Gemini, OpenAI o Anthropic Claude.
+- **Entorno de IA Local (Recomendado):** [Ollama](https://ollama.com/) con el modelo más adecuado localmente.
+- **Servicios en la Nube (Opcional):** Clave de API para Google Gemini, OpenAI o Anthropic Claude (con la capacidad de seleccionar el modelo de cada empresa en el .env).
 
 ---
 
@@ -137,11 +135,7 @@ PUERTO=8000
 El proyecto adopta una estructura modular y desacoplada acorde a las buenas prácticas de ingeniería de software:
 
 ```text
-Ejercicio 10/
-├── docs/                                  # Documentación técnica de entrega
-│   ├── Informe_Ejecutivo_CodificaMed.docx # Informe oficial en formato Word (Plantilla ESPOCH)
-│   └── Informe_Ejecutivo_CodificaMed.md   # Informe técnico completo en Markdown
-│
+codificamed/
 ├── app/                                   # Código fuente de la aplicación
 │   ├── main.py                            # Endpoints REST y servidor FastAPI
 │   ├── config.py                          # Configuración y variables de entorno
@@ -175,19 +169,11 @@ Ejercicio 10/
 │       ├── README.txt                     # Metadatos del corpus CodiEsp
 │       └── casos_clinicos/                # 250 casos clínicos en español
 │
-├── recursos_estudiante/                   # Material complementario interno
-│   ├── guion_video.md                     # Guión de exposición para video
-│   ├── guion_video.txt                    # Versión de texto plano del guión
-│   ├── enunciado_actividad_PLN.pdf        # Enunciado original de la cátedra
-│   ├── enunciado_actividad_PLN.md         # Transcripción del enunciado
-│   └── generar_informe_word.py            # Script generador del documento Word
-│
-├── video_demostracion.mp4                 # Video demostrativo de la solución
 ├── .env.example                           # Plantilla de variables de entorno
-├── .env                                   # Archivo local de configuración
 ├── .gitignore                             # Exclusiones de control de versiones
-├── requirements.txt                       # Librerías de Python requeridas
+├── README.md                              # Este archivo README.md
 ├── main.py                                # Punto de entrada principal
+├── requirements.txt                       # Librerías de Python requeridas
 └── run_app.bat                            # Lanzador para Windows
 ```
 
@@ -219,11 +205,3 @@ Evaluación ejecutada sobre el conjunto de 10 casos clínicos del *Gold Standard
 | **Exactitud de Negación** | **94.50%** | **98.10%** | **98.50%** |
 | **Latencia Promedio / Caso** | **4.20 s** | **0.95 s** | **1.10 s** |
 | **Privacidad de Datos** | Total (Local sin salida externa) | Envío a Nube | Envío a Nube |
-
----
-
-## 9. Autores y Créditos
-
-- **Estudiante:** Steve (Carrera de Ingeniería en Software · Séptimo Semestre).
-- **Institución:** Escuela Superior Politécnica de Chimborazo (ESPOCH).
-- **Corpus de Referencia:** CodiEsp track de CLEF eHealth 2020 (Barcelona Supercomputing Center - Plan TL).
