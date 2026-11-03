@@ -1,0 +1,38 @@
+# Entorno virtual y dependencias
+.venv/
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Archivos de configuracion con claves reales
+.env
+*.local.env
+
+# Bytecode y caches de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Archivos temporales del sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+*.log
+
+# Entornos de desarrollo e IDEs
+.vscode/
+.idea/
+
+# Recursos internos del estudiante (no suben al repositorio publico/docente)
+recursos_estudiante/
+
+# Video demostrativo si excede limites de Git (se entrega via enlace segun rubrica)
+video_demostracion.mp4
+*.mp4

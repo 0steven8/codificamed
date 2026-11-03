@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodificaMed v1.0 - Codificación Automática CIE-10 con PLN</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1.0">
+  <link rel="icon" type="image/png" sizes="64x64" href="/static/img/favicon.png?v=1.0">
+  <link rel="shortcut icon" href="/favicon.ico?v=1.0">
+  <link rel="stylesheet" href="/static/css/styles.css?v=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Cabecera Superior Fija con Pestañas -->
+  <div class="top-nav-wrapper">
+    <!-- Barra Superior de Navegacion Institucional -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-area">
+          <div class="logo-badge" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <div>
+            <div class="logo-title">
+              CodificaMed
+              <span class="version-tag">v1.0</span>
+            </div>
+            <div class="logo-sub">Codificación Automática CIE-10 de Historias Clínicas con PLN</div>
+          </div>
+        </div>
+
+        <div class="header-meta">
+          <span class="academic-badge">Base de Conocimiento · ESPOCH - FIE</span>
+          <button type="button" class="btn-api-badge" onclick="abrirModalApiKeys()" title="Configurar claves de API externas">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="7.5" cy="15.5" r="5.5"/>
+              <path d="m21 2-9.6 9.6"/>
+              <path d="m15.5 7.5 3 3L22 7l-3-3"/>
+            </svg>
+            <span>Claves de API</span>
+            <span id="headerApiKeyDot" class="header-key-dot" title="Estado de claves"></span>
+          </button>
+          <div id="statusOllama" class="status-pill status-loading" title="Estado del servicio local Ollama">
+            <span class="status-indicator"></span>
+            <span id="statusOllamaText">Detectando servicio...</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Barra de Pestañas -->
+    <nav class="nav-bar" aria-label="Navegación principal">
+      <div class="nav-container">
+        <button class="tab-button active" data-tab="tab-codificar" id="tabBtnCodificar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
+          <span>Codificación Clínica</span>
+        </button>
+
+        <button class="tab-button" data-tab="tab-comparar" id="tabBtnComparar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="18" rx="2"/>
+            <line x1="12" y1="3" x2="12" y2="21"/>
+          </svg>
+          <span>Comparación Local vs API</span>
+        </button>
+
+        <button class="tab-button" data-tab="tab-evaluacion" id="tabBtnEvaluacion">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <span>Evaluación CRISP-ML(Q)</span>
+        </button>
+
+        <button class="tab-button" data-tab="tab-catalogo" id="tabBtnCatalogo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+          <span>Catálogo CIE-10</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Contenedor Principal de Contenido -->
+  <main class="main-content">
+
+    <!-- ========================================================= -->
+    <!-- PESTAÑA 1: CODIFICACIÓN CLÍNICA                           -->
+    <!-- ========================================================= -->
+    <section id="tab-codificar" class="tab-panel active" aria-labelledby="tabBtnCodificar">
+      
+      <!-- Barra de Casos de Prueba Preconfigurados -->
+      <div class="preset-card">
+        <div class="preset-label-area">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          </svg>
+          <span class="preset-label">Casos clínicos de prueba:</span>
+        </div>
+        <div class="preset-buttons">
+          <button type="button" class="btn-preset active" data-preset="0" onclick="cargarCasoEjemplo(0)">Caso 1: Diabetes y dolor abdominal</button>
+          <button type="button" class="btn-preset" data-preset="1" onclick="cargarCasoEjemplo(1)">Caso 2: Cuadro respiratorio agudo</button>
+          <button type="button" class="btn-preset" data-preset="2" onclick="cargarCasoEjemplo(2)">Caso 3: Sospecha de apendicitis</button>
+          <button type="button" class="btn-preset" data-preset="3" onclick="cargarCasoEjemplo(3)">Caso 4: Infección de vías urinarias</button>
+        </div>
+      </div>
+
+      <!-- Configuración del Proveedor y Clave en Tiempo Real -->
+      <div class="settings-card">
+        <div class="form-row">
+          <div class="form-field" style="width: 280px;">
+            <div class="field-label-row">
+              <label for="selectProveedor">Proveedor de Inteligencia Artificial:</label>
+            </div>
+            <div class="select-wrapper">
+              <select id="selectProveedor" onchange="cambiarProveedorTab1()">
+                <option value="ollama" selected>Ollama Local</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="openai">OpenAI ChatGPT</option>
+                <option value="claude">Anthropic Claude</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field form-field-grow" id="contenedorProveedorInfo">
+            <!-- Rellenado dinamicamente con JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Editor de Entrada de Historia Clínica -->
+      <div class="editor-card">
+        <div class="editor-top">
+          <div class="editor-label-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            <label for="inputNotaClinica">Historia Clínica / Nota de Evolución Médica:</label>
+          </div>
+          <div class="editor-actions">
+            <span id="charCount" class="counter-text">0 caracteres | 0 palabras</span>
+            <button type="button" class="btn-link" onclick="limpiarTexto()">Limpiar texto</button>
+          </div>
+        </div>
+        
+        <textarea id="inputNotaClinica" rows="6" spellcheck="false" placeholder="Ingresa la nota médica en texto libre. El sistema analiza abreviaturas clínicas (ej. HTA, DM2, dolor abd) y expresiones de negación o descarte (ej. niega fiebre, se descarta neumonía)..."></textarea>
+
+        <div class="action-row">
+          <button type="button" id="btnCodificar" class="btn-submit" onclick="ejecutarCodificacion()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+            <span>Analizar y Codificar con PLN</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Estado de Carga del Pipeline -->
+      <div id="pipelineStatus" class="status-banner" style="display: none;" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="status-banner-text">
+          <span id="pipelineStatusText" class="status-banner-title">Ejecutando pipeline de procesamiento clínico...</span>
+          <span id="pipelineTime" class="status-banner-time">0.0 s</span>
+        </div>
+      </div>
+
+      <!-- Sección de Resultados Clínicos -->
+      <div id="sectionResultados" class="results-container" style="display: none;">
+        
+        <!-- Fila de Indicadores KPI -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-number" id="metricTotal">0</div>
+            <div class="stat-caption">Códigos Sugeridos</div>
+          </div>
+          <div class="stat-card stat-confirmed">
+            <div class="stat-number" id="metricConfirmados">0</div>
+            <div class="stat-caption">Confirmados</div>
+          </div>
+          <div class="stat-card stat-negated">
+            <div class="stat-number" id="metricNegados">0</div>
+            <div class="stat-caption">Negados / Descartados</div>
+          </div>
+          <div class="stat-card stat-suspicious">
+            <div class="stat-number" id="metricSospechas">0</div>
+            <div class="stat-caption">Sospechas Clínicas</div>
+          </div>
+          <div class="stat-card stat-time">
+            <div class="stat-number" id="metricTiempo">0.0s</div>
+            <div class="stat-caption">Tiempo de Inferencia</div>
+            <div class="stat-meta-note" id="metricTokensTab1">~0 tokens · Local</div>
+          </div>
+        </div>
+
+        <!-- Síntesis Clínica Estructurada -->
+        <div class="summary-box">
+          <div class="summary-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Síntesis Clínica Estructurada</span>
+          </div>
+          <p id="clinicalSummaryText">-</p>
+        </div>
+
+        <!-- Vista Dividida: Evidencia Textual Interrelacionada y Diagnósticos -->
+        <div class="split-view">
+          
+          <!-- Columna Izquierda: Nota con Marcado Interactivo -->
+          <div class="split-column">
+            <div class="card-panel">
+              <div class="card-panel-header">
+                <h3>Nota Médica con Evidencia Textual</h3>
+                <span class="panel-subtitle">Pasa el cursor sobre un término para resaltar su código</span>
+              </div>
+              <div id="annotatedText" class="annotated-text-box"></div>
+              
+              <div class="legend-row">
+                <span class="legend-chip"><span class="chip-color chip-confirmed"></span> Confirmado</span>
+                <span class="legend-chip"><span class="chip-color chip-negated"></span> Negado / Descartado</span>
+                <span class="legend-chip"><span class="chip-color chip-suspicious"></span> Sospecha</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Tarjetas de Diagnóstico CIE-10 -->
+          <div class="split-column">
+            <div class="card-panel">
+              <div class="card-panel-header">
+                <h3>Códigos CIE-10 Asignados y Justificación</h3>
+                <span class="panel-subtitle" id="diagnosesCountBadge">0 diagnósticos</span>
+              </div>
+              <div id="diagnosesList" class="diagnoses-container"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Acciones de Exportación Formal -->
+        <div class="export-actions">
+          <button type="button" class="btn-outline" onclick="copiarJson()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copiar JSON Estructurado</span>
+          </button>
+          
+          <button type="button" class="btn-outline" onclick="exportarInforme()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>Descargar Informe Markdown</span>
+          </button>
+
+          <button type="button" class="btn-outline" onclick="window.print()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            <span>Imprimir Vista</span>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PESTAÑA 2: COMPARAR MODELOS (LOCAL VS API)                -->
+    <!-- ========================================================= -->
+    <section id="tab-comparar" class="tab-panel" aria-labelledby="tabBtnComparar">
+      
+      <div class="info-callout">
+        <div class="info-callout-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Evaluación Comparativa: Modelo Local vs API Externa</h3>
+          <p>Análisis simultáneo de la historia clínica para contrastar diagnósticos codificados, detección de negaciones y tiempos de respuesta entre el motor local y el servicio en la nube.</p>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="form-row">
+          <div class="form-field" style="width: 210px;">
+            <div class="field-label-row">
+              <label>Motor Local:</label>
+            </div>
+            <div class="static-control-display">
+              <span class="status-indicator" style="background: #10b981;"></span>
+              <span class="static-control-title">Ollama Local</span>
+              <span id="compLocalModelBadge" class="static-model-tag">llama3.1</span>
+              <input type="hidden" id="compLocalProv" value="ollama">
+            </div>
+          </div>
+
+          <div class="form-field" style="width: 210px;">
+            <div class="field-label-row">
+              <label for="compApiProv">API Externa en la Nube:</label>
+            </div>
+            <div class="select-wrapper">
+              <select id="compApiProv" onchange="cambiarProveedorComparacion()">
+                <option value="gemini" data-prov="gemini" selected>Google Gemini</option>
+                <option value="openai" data-prov="openai">OpenAI ChatGPT</option>
+                <option value="claude" data-prov="claude">Anthropic Claude</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field form-field-grow" id="compApiKeyBox">
+            <div class="field-label-row">
+              <label id="compLblApiKey" for="compApiKeyInput">Clave de API (Google Gemini):</label>
+              <span id="compBadgeApiKey" class="status-pill status-warn">No configurada</span>
+            </div>
+            <div class="api-key-input-row">
+              <input type="password" id="compApiKeyInput" placeholder="Ingresa tu clave de API..." oninput="guardarClaveEnTiempoReal(document.getElementById('compApiProv').value, this.value)">
+              <button type="button" class="btn-toggle-eye" onclick="toggleVisibilidadClave('compApiKeyInput')">Ver</button>
+            </div>
+          </div>
+
+          <div class="form-field-action">
+            <div class="field-label-row">
+              <label class="label-spacer" aria-hidden="true">&nbsp;</label>
+            </div>
+            <button type="button" class="btn-submit" id="btnEjecutarComparacion" onclick="ejecutarComparacion()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 3h5v5"/>
+                <path d="M4 20L21 3"/>
+                <path d="M21 16v5h-5"/>
+                <path d="M15 15l6 6"/>
+                <path d="M4 4l5 5"/>
+              </svg>
+              <span>Ejecutar Comparación</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="compProgress" class="status-banner" style="display: none;" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="status-banner-text">
+          <span class="status-banner-title">Ejecutando inferencia en paralelo (Local y Nube)...</span>
+          <span id="compTime" class="status-banner-time">0.0 s</span>
+        </div>
+      </div>
+
+      <!-- Franja Resumen Comparativo de Tiempo y Rendimiento -->
+      <div id="compMetricsStrip" class="comp-metrics-strip" style="display: none;">
+        <div class="comp-metric-box">
+          <div class="comp-metric-title">Tiempo Motor Local</div>
+          <div class="comp-metric-value" id="compLocalTimeVal">0.0s</div>
+          <div class="comp-metric-note" id="compLocalTokenVal">~0 tokens · Ollama</div>
+        </div>
+        <div class="comp-metric-box">
+          <div class="comp-metric-title">Tiempo API Nube</div>
+          <div class="comp-metric-value" id="compApiTimeVal">0.0s</div>
+          <div class="comp-metric-note" id="compApiTokenVal">~0 tokens · Nube</div>
+        </div>
+        <div class="comp-metric-box comp-metric-highlight">
+          <div class="comp-metric-title">Diferencia de Rendimiento</div>
+          <div class="comp-metric-value" id="compSpeedupVal">-</div>
+          <div class="comp-metric-note" id="compSpeedupNote">Comparativa de latencia en paralelo</div>
+        </div>
+      </div>
+
+      <div id="compResults" class="comparison-layout" style="display: none;">
+        <div class="comparison-column">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <h3>Modelo Local (Ollama)</h3>
+              <span id="compLocalMeta" class="meta-tag">-</span>
+            </div>
+            <div id="compLocalList" class="comparison-body"></div>
+          </div>
+        </div>
+
+        <div class="comparison-column">
+          <div class="card-panel">
+            <div class="card-panel-header">
+              <h3>API en la Nube</h3>
+              <span id="compApiMeta" class="meta-tag">-</span>
+            </div>
+            <div id="compApiList" class="comparison-body"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PESTAÑA 3: EVALUACIÓN CRISP-ML(Q)                         -->
+    <!-- ========================================================= -->
+    <section id="tab-evaluacion" class="tab-panel" aria-labelledby="tabBtnEvaluacion">
+      
+      <div class="info-callout">
+        <div class="info-callout-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Fase 4 CRISP-ML(Q): Aseguramiento de Calidad y Métricas Formales</h3>
+          <p>Evaluación cuantitativa sobre el conjunto de referencia con diagnósticos y aserciones clínicas verificadas. Calcula automáticamente precisión, exhaustividad (recall), F1-score y exactitud en la detección de negaciones.</p>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="form-row">
+          <div class="form-field" style="width: 250px;">
+            <div class="field-label-row">
+              <label for="evalProveedor">Proveedor para evaluación:</label>
+            </div>
+            <div class="select-wrapper">
+              <select id="evalProveedor" onchange="cambiarProveedorEvaluacion()">
+                <option value="ollama" selected>Ollama Local</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="openai">OpenAI ChatGPT</option>
+                <option value="claude">Anthropic Claude</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field" style="width: 180px;">
+            <div class="field-label-row">
+              <label for="evalLimite">Muestra de casos:</label>
+            </div>
+            <div class="select-wrapper">
+              <select id="evalLimite">
+                <option value="5" selected>5 casos de prueba</option>
+                <option value="10">10 casos (completo)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field form-field-grow" id="evalApiKeyBox">
+            <!-- Rellenado dinamicamente con JS -->
+          </div>
+
+          <div class="form-field-action">
+            <div class="field-label-row">
+              <label class="label-spacer" aria-hidden="true">&nbsp;</label>
+            </div>
+            <button type="button" class="btn-submit" id="btnEjecutarEvaluacion" onclick="ejecutarEvaluacion()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Iniciar Evaluación</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="evalProgress" class="status-banner" style="display: none;" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="status-banner-text">
+          <div>
+            <span class="status-banner-title" id="evalProgressTitle">Evaluando dataset Gold Standard (Corpus CodiEsp)...</span>
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+              El motor procesa caso por caso de forma secuencial en GPU/CPU para garantizar métricas formales.
+            </div>
+          </div>
+          <span id="evalTime" class="status-banner-time">0.0 s</span>
+        </div>
+      </div>
+
+      <div id="evalResults" class="results-container" style="display: none;">
+        <div class="stats-row">
+          <div class="stat-card stat-confirmed">
+            <div class="stat-number" id="metricEvalF1">0.00%</div>
+            <div class="stat-caption">F1-Score Global</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="metricEvalPrecision">0.00%</div>
+            <div class="stat-caption">Precisión (Precision)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="metricEvalRecall">0.00%</div>
+            <div class="stat-caption">Exhaustividad (Recall)</div>
+          </div>
+          <div class="stat-card stat-suspicious">
+            <div class="stat-number" id="metricEvalAsercion">0.00%</div>
+            <div class="stat-caption">Exactitud de Negación</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="metricEvalLatencia">0.0s</div>
+            <div class="stat-caption">Latencia Media por Caso</div>
+          </div>
+          <div class="stat-card stat-time">
+            <div class="stat-number" id="metricEvalTotalTime">0.0s</div>
+            <div class="stat-caption">Tiempo Total Benchmark</div>
+            <div class="stat-meta-note">10 casos evaluados</div>
+          </div>
+        </div>
+
+        <div class="card-panel" style="margin-top: 20px;">
+          <div class="card-panel-header">
+            <h3>Resultados Detallados por Caso Clínico</h3>
+            <span class="panel-subtitle">10 historias clínicas de referencia evaluadas (Corpus CodiEsp - CLEF eHealth 2020)</span>
+          </div>
+          <div class="table-container">
+            <table class="clinical-table">
+              <thead>
+                <tr>
+                  <th style="width: 70px;">Caso</th>
+                  <th>Título Clínico</th>
+                  <th style="width: 50px; text-align: center;">TP</th>
+                  <th style="width: 50px; text-align: center;">FP</th>
+                  <th style="width: 50px; text-align: center;">FN</th>
+                  <th style="width: 90px; text-align: center;">Precisión</th>
+                  <th style="width: 90px; text-align: center;">Recall</th>
+                  <th style="width: 90px; text-align: center;">F1</th>
+                  <th style="width: 80px; text-align: center;">Tiempo</th>
+                </tr>
+              </thead>
+              <tbody id="evalTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PESTAÑA 4: CATÁLOGO CIE-10                                -->
+    <!-- ========================================================= -->
+    <section id="tab-catalogo" class="tab-panel" aria-labelledby="tabBtnCatalogo">
+      
+      <div class="card-panel">
+        <div class="card-panel-header">
+          <div>
+            <h3>Catálogo de Referencia CIE-10 Indexado</h3>
+            <span class="panel-subtitle" id="catalogoCountSubtitle">Cargando códigos...</span>
+          </div>
+          <div class="search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="inputBuscarCatalogo" placeholder="Buscar por código, enfermedad o síntoma..." oninput="filtrarCatalogo()">
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th style="width: 100px;">Código</th>
+                <th>Descripción Oficial CIE-10</th>
+                <th style="width: 220px;">Capítulo</th>
+                <th>Sinónimos y Variantes Clínicas</th>
+              </tr>
+            </thead>
+            <tbody id="catalogoTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modal Global de Configuración de Claves de API -->
+  <div id="modalApiKeys" class="modal-overlay" style="display: none;" onclick="cerrarModalAlFondo(event)" role="dialog" aria-modal="true" aria-labelledby="modalTitleId">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitleId">Configuración de Proveedores de API</div>
+        <button type="button" class="btn-modal-close" onclick="cerrarModalApiKeys()" aria-label="Cerrar modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Configura las credenciales de acceso para los modelos en la nube. Si utilizas el modelo local (Ollama), no es necesario ingresar ninguna clave.</p>
+
+        <div class="api-key-group">
+          <div class="api-key-group-header">
+            <label for="keyModalGemini">Google Gemini</label>
+            <span id="badgeModalGemini" class="status-pill status-warn">No configurada</span>
+          </div>
+          <div class="api-key-input-row">
+            <input type="password" id="keyModalGemini" placeholder="Ingresa tu clave de API..." oninput="guardarClaveEnTiempoReal('gemini', this.value)">
+            <button type="button" class="btn-toggle-eye" onclick="toggleVisibilidadClave('keyModalGemini')">Ver</button>
+          </div>
+        </div>
+
+        <div class="api-key-group">
+          <div class="api-key-group-header">
+            <label for="keyModalOpenai">OpenAI ChatGPT</label>
+            <span id="badgeModalOpenai" class="status-pill status-warn">No configurada</span>
+          </div>
+          <div class="api-key-input-row">
+            <input type="password" id="keyModalOpenai" placeholder="Ingresa tu clave de API..." oninput="guardarClaveEnTiempoReal('openai', this.value)">
+            <button type="button" class="btn-toggle-eye" onclick="toggleVisibilidadClave('keyModalOpenai')">Ver</button>
+          </div>
+        </div>
+
+        <div class="api-key-group">
+          <div class="api-key-group-header">
+            <label for="keyModalClaude">Anthropic Claude</label>
+            <span id="badgeModalClaude" class="status-pill status-warn">No configurada</span>
+          </div>
+          <div class="api-key-input-row">
+            <input type="password" id="keyModalClaude" placeholder="Ingresa tu clave de API..." oninput="guardarClaveEnTiempoReal('claude', this.value)">
+            <button type="button" class="btn-toggle-eye" onclick="toggleVisibilidadClave('keyModalClaude')">Ver</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-submit btn-sm" onclick="cerrarModalApiKeys()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de Notificaciones -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Pie de Página Institucional -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div><strong>CodificaMed v1.0</strong> — Sistema de Codificación Automática CIE-10 con Procesamiento de Lenguaje Natural</div>
+      <div class="footer-sub">Ingeniería en Software · ESPOCH · Base de Conocimiento · Metodología CRISP-ML(Q)</div>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js?v=1.0"></script>
+</body>
+</html>

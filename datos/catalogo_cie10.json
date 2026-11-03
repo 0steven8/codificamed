@@ -1,0 +1,362 @@
+[
+  {
+    "codigo": "I10",
+    "descripcion": "Hipertensión esencial (primaria)",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["hta", "hipertension arterial", "presion alta", "crisis hipertensiva", "hipertensa", "hipertenso"]
+  },
+  {
+    "codigo": "I11.9",
+    "descripcion": "Enfermedad cardíaca hipertensiva sin insuficiencia cardíaca",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["cardiopatia hipertensiva", "hipertension con compromiso cardiaco"]
+  },
+  {
+    "codigo": "I20.9",
+    "descripcion": "Angina de pecho, no especificada",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["angina de pecho", "angina", "dolor anginoso", "angina pectoris", "sindrome coronario"]
+  },
+  {
+    "codigo": "I21.9",
+    "descripcion": "Infarto agudo del miocardio, sin otra especificación",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["iam", "infarto agudo de miocardio", "infarto cardiaco", "ataque al corazon", "sindrome coronario agudo", "sca"]
+  },
+  {
+    "codigo": "I50.9",
+    "descripcion": "Insuficiencia cardíaca, no especificada",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["icc", "insuficiencia cardiaca congestiva", "falla cardiaca", "insuficiencia cardiaca"]
+  },
+  {
+    "codigo": "I64",
+    "descripcion": "Accidente vascular encefálico agudo, no especificado como hemorrágico o isquémico",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["acv", "ecv", "accidente cerebrovascular", "derrame cerebral", "ictus", "evento cerebrovascular"]
+  },
+  {
+    "codigo": "I48.9",
+    "descripcion": "Fibrilación y aleteo auricular, no especificado",
+    "capitulo": "IX. Enfermedades del sistema circulatorio",
+    "sinonimos": ["fa", "fibrilacion auricular", "arritmia auricular", "aleteo auricular"]
+  },
+  {
+    "codigo": "E11.9",
+    "descripcion": "Diabetes mellitus tipo 2, sin mención de complicación",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["dm2", "dbt2", "diabetes mellitus tipo 2", "diabetes tipo 2", "diabetico no insulinodependiente", "dm tipo 2"]
+  },
+  {
+    "codigo": "E11.6",
+    "descripcion": "Diabetes mellitus tipo 2 con otras complicaciones especificadas",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["pie diabetico", "diabetes descompensada", "cetoacidosis diabetica", "dm2 descompensada"]
+  },
+  {
+    "codigo": "E10.9",
+    "descripcion": "Diabetes mellitus tipo 1, sin mención de complicación",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["dm1", "dbt1", "diabetes mellitus tipo 1", "diabetes tipo 1", "diabetes juvenil", "insulinodependiente"]
+  },
+  {
+    "codigo": "E66.9",
+    "descripcion": "Obesidad, no especificada",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["obesidad", "sobrepeso severo", "obesidad grado 1", "obesidad grado 2", "obesidad morbida"]
+  },
+  {
+    "codigo": "E03.9",
+    "descripcion": "Hipotiroidismo, no especificado",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["hipotiroidismo", "tiroides baja", "hipotiroideo"]
+  },
+  {
+    "codigo": "E05.9",
+    "descripcion": "Tirotoxicosis [hipertiroidismo], no especificada",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["hipertiroidismo", "tirotoxicosis"]
+  },
+  {
+    "codigo": "E78.5",
+    "descripcion": "Hiperlipidemia, no especificada",
+    "capitulo": "IV. Enfermedades endocrinas, nutricionales y metabólicas",
+    "sinonimos": ["dislipidemia", "colesterol alto", "hipercolesterolemia", "trigliceridos altos", "hipertrigliceridemia"]
+  },
+  {
+    "codigo": "J00",
+    "descripcion": "Rinofaringitis aguda [resfriado común]",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["resfriado comun", "rinofaringitis", "rinitis aguda", "gripe comun", "catarro comun"]
+  },
+  {
+    "codigo": "J02.9",
+    "descripcion": "Faringitis aguda, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["faringitis", "faringoamigdalitis", "dolor de garganta agudo", "inflamacion faringea"]
+  },
+  {
+    "codigo": "J03.9",
+    "descripcion": "Amigdalitis aguda, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["amigdalitis", "tonsilitis", "amigdalitis purulenta"]
+  },
+  {
+    "codigo": "J01.9",
+    "descripcion": "Sinusitis aguda, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["sinusitis aguda", "sinusitis", "rinitosinusitis"]
+  },
+  {
+    "codigo": "J18.9",
+    "descripcion": "Neumonía, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["neumonia", "bronconeumonia", "infeccion pulmonar", "neumonia adquirida en la comunidad", "nac"]
+  },
+  {
+    "codigo": "J20.9",
+    "descripcion": "Bronquitis aguda, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["bronquitis aguda", "bronquitis", "cuadro bronquial"]
+  },
+  {
+    "codigo": "J44.9",
+    "descripcion": "Enfermedad pulmonar obstructiva crónica, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["epoc", "enfermedad pulmonar obstructiva cronica", "bronquitis cronica", "enfisema pulmonar"]
+  },
+  {
+    "codigo": "J45.9",
+    "descripcion": "Asma, no especificada",
+    "capitulo": "X. Enfermedades del sistema respiratorio",
+    "sinonimos": ["asma", "crisis asmatica", "broncoespasmo", "asma bronquial"]
+  },
+  {
+    "codigo": "K21.9",
+    "descripcion": "Enfermedad por reflujo gastroesofágico sin esofagitis",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["erge", "reflujo gastroesofagico", "reflujo", "acidez estomacal", "pirosis"]
+  },
+  {
+    "codigo": "K29.7",
+    "descripcion": "Gastritis, no especificada",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["gastritis", "gastropatia", "ardor de estomago", "gastritis aguda", "gastritis cronica"]
+  },
+  {
+    "codigo": "K25.9",
+    "descripcion": "Úlcera gástrica, no especificada como aguda ni crónica, sin hemorragia ni perforación",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["ulcera gastrica", "ulcera peptica", "ulcera de estomago"]
+  },
+  {
+    "codigo": "K35.8",
+    "descripcion": "Apendicitis aguda, otra y la no especificada",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["apendicitis", "apendicitis aguda", "cuadro apendicular", "dolor en fid"]
+  },
+  {
+    "codigo": "K40.9",
+    "descripcion": "Hernia inguinal unilateral o no especificada, sin obstrucción ni gangrena",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["hernia inguinal", "hernia de la ingle"]
+  },
+  {
+    "codigo": "K80.2",
+    "descripcion": "Cálculo de la vesícula biliar sin colecistitis",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["colelitiasis", "calculos biliares", "piedras en la vesicula", "litiasis vesicular"]
+  },
+  {
+    "codigo": "K81.0",
+    "descripcion": "Colecistitis aguda",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["colecistitis", "colecistitis aguda", "vesicula inflamada"]
+  },
+  {
+    "codigo": "K59.0",
+    "descripcion": "Constipación",
+    "capitulo": "XI. Enfermedades del sistema digestivo",
+    "sinonimos": ["estrenimiento", "constipacion", "dificultad para defecar"]
+  },
+  {
+    "codigo": "A09",
+    "descripcion": "Gastroenteritis y colitis de origen no especificado",
+    "capitulo": "I. Ciertas enfermedades infecciosas y parasitarias",
+    "sinonimos": ["gea", "gastroenteritis", "gastroenteritis aguda", "diarrea aguda", "colitis", "infeccion intestinal"]
+  },
+  {
+    "codigo": "A08.4",
+    "descripcion": "Infección intestinal viral, sin otra especificación",
+    "capitulo": "I. Ciertas enfermedades infecciosas y parasitarias",
+    "sinonimos": ["gastroenteritis viral", "virosis gastrointestinal", "diarrea viral"]
+  },
+  {
+    "codigo": "N39.0",
+    "descripcion": "Infección del tracto urinario, sitio no especificado",
+    "capitulo": "XIV. Enfermedades del sistema genitourinario",
+    "sinonimos": ["itu", "ivu", "infeccion de vias urinarias", "infeccion urinaria", "cistitis", "infeccion del tracto urinario"]
+  },
+  {
+    "codigo": "N20.1",
+    "descripcion": "Cálculo del uréter",
+    "capitulo": "XIV. Enfermedades del sistema genitourinario",
+    "sinonimos": ["colico renal", "colico nefritico", "litiasis ureteral", "calculo ureteral", "piedra en rinon"]
+  },
+  {
+    "codigo": "N18.9",
+    "descripcion": "Enfermedad renal crónica, no especificada",
+    "capitulo": "XIV. Enfermedades del sistema genitourinario",
+    "sinonimos": ["erc", "irc", "enfermedad renal cronica", "insuficiencia renal cronica", "dano renal"]
+  },
+  {
+    "codigo": "N40",
+    "descripcion": "Hiperplasia de la próstata",
+    "capitulo": "XIV. Enfermedades del sistema genitourinario",
+    "sinonimos": ["hbp", "hiperplasia prostatica benigna", "prostata agrandada", "adenoma de prostata"]
+  },
+  {
+    "codigo": "M54.5",
+    "descripcion": "Lumbago no especificado",
+    "capitulo": "XIII. Enfermedades del sistema osteomuscular y del tejido conjuntivo",
+    "sinonimos": ["lumbalgia", "lumbago", "dolor lumbar", "dolor de espalda baja"]
+  },
+  {
+    "codigo": "M54.2",
+    "descripcion": "Cervicalgia",
+    "capitulo": "XIII. Enfermedades del sistema osteomuscular y del tejido conjuntivo",
+    "sinonimos": ["cervicalgia", "dolor de cuello", "contractura cervical"]
+  },
+  {
+    "codigo": "M25.5",
+    "descripcion": "Dolor en articulación",
+    "capitulo": "XIII. Enfermedades del sistema osteomuscular y del tejido conjuntivo",
+    "sinonimos": ["artralgia", "dolor articular", "dolor de articulaciones"]
+  },
+  {
+    "codigo": "M19.9",
+    "descripcion": "Artrosis, no especificada",
+    "capitulo": "XIII. Enfermedades del sistema osteomuscular y del tejido conjuntivo",
+    "sinonimos": ["artrosis", "osteoartrosis", "osteoartritis", "desgaste articular"]
+  },
+  {
+    "codigo": "M79.1",
+    "descripcion": "Mialgia",
+    "capitulo": "XIII. Enfermedades del sistema osteomuscular y del tejido conjuntivo",
+    "sinonimos": ["mialgia", "dolor muscular", "contractura muscular"]
+  },
+  {
+    "codigo": "R10.4",
+    "descripcion": "Otros dolores abdominales y los no especificados",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["dolor abdominal", "dolor abd", "dolor de estomago", "dolor de panza", "dolor en epigastrio", "epigastralgia"]
+  },
+  {
+    "codigo": "R50.9",
+    "descripcion": "Fiebre, no especificada",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["fiebre", "febril", "alza termica", "temperatura alta", "sindrome febril"]
+  },
+  {
+    "codigo": "R05",
+    "descripcion": "Tos",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["tos", "tos seca", "tos productiva", "tos con flema"]
+  },
+  {
+    "codigo": "R51",
+    "descripcion": "Cefalea",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["cefalea", "dolor de cabeza", "migrana", "jaqueca"]
+  },
+  {
+    "codigo": "R11",
+    "descripcion": "Náusea y vómito",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["nauseas", "vomito", "emesis", "nauseas y vomitos", "vomitos"]
+  },
+  {
+    "codigo": "R42",
+    "descripcion": "Mareo y desvanecimiento",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["mareo", "vertigo", "desvanecimiento", "inestabilidad"]
+  },
+  {
+    "codigo": "R53",
+    "descripcion": "Malestar y fatiga",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["astenia", "fatiga", "malestar general", "adinamia", "cansancio"]
+  },
+  {
+    "codigo": "R06.0",
+    "descripcion": "Disnea",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["disnea", "dificultad para respirar", "falta de aire", "ahogo"]
+  },
+  {
+    "codigo": "R07.4",
+    "descripcion": "Dolor en el pecho, no especificado",
+    "capitulo": "XVIII. Síntomas, signos y hallazgos anormales clínicos y de laboratorio",
+    "sinonimos": ["dolor toracico", "dolor de pecho", "dolor precordial", "toracalgia"]
+  },
+  {
+    "codigo": "S06.0",
+    "descripcion": "Conmoción cerebral",
+    "capitulo": "XIX. Traumatismos, envenenamientos y algunas otras consecuencias de causas externas",
+    "sinonimos": ["tce", "traumatismo craneoencefalico", "golpe en la cabeza", "trauma craneal", "conmocion"]
+  },
+  {
+    "codigo": "S00.9",
+    "descripcion": "Traumatismo superficial de la cabeza, parte no especificada",
+    "capitulo": "XIX. Traumatismos, envenenamientos y algunas otras consecuencias de causas externas",
+    "sinonimos": ["herida en cabeza", "contusion en cabeza", "trauma superficial cabeza"]
+  },
+  {
+    "codigo": "S93.4",
+    "descripcion": "Esguince y torcedura del tobillo",
+    "capitulo": "XIX. Traumatismos, envenenamientos y algunas otras consecuencias de causas externas",
+    "sinonimos": ["esguince de tobillo", "torcedura de tobillo", "trauma de tobillo"]
+  },
+  {
+    "codigo": "T78.4",
+    "descripcion": "Alergia no especificada",
+    "capitulo": "XIX. Traumatismos, envenenamientos y algunas otras consecuencias de causas externas",
+    "sinonimos": ["alergia", "reaccion alergica", "rash alergico", "urticaria aguda"]
+  },
+  {
+    "codigo": "B34.9",
+    "descripcion": "Infección viral, no especificada",
+    "capitulo": "I. Ciertas enfermedades infecciosas y parasitarias",
+    "sinonimos": ["sindrome viral", "infeccion viral", "virosis", "cuadro viral"]
+  },
+  {
+    "codigo": "F41.9",
+    "descripcion": "Trastorno de ansiedad, no especificado",
+    "capitulo": "V. Trastornos mentales y del comportamiento",
+    "sinonimos": ["ansiedad", "crisis de ansiedad", "ataque de panico", "trastorno ansioso"]
+  },
+  {
+    "codigo": "F32.9",
+    "descripcion": "Episodio depresivo, no especificado",
+    "capitulo": "V. Trastornos mentales y del comportamiento",
+    "sinonimos": ["depresion", "sindrome depresivo", "cuadro depresivo"]
+  },
+  {
+    "codigo": "L03.9",
+    "descripcion": "Celulitis de sitio no especificado",
+    "capitulo": "XII. Enfermedades de la piel y del tejido subcutáneo",
+    "sinonimos": ["celulitis infecciosa", "infeccion de piel", "celulitis bacteriana"]
+  },
+  {
+    "codigo": "H10.9",
+    "descripcion": "Conjuntivitis, no especificada",
+    "capitulo": "VII. Enfermedades del ojo y sus anexos",
+    "sinonimos": ["conjuntivitis", "ojo rojo", "infeccion ocular"]
+  },
+  {
+    "codigo": "H66.9",
+    "descripcion": "Otitis media, no especificada",
+    "capitulo": "VIII. Enfermedades del oído y de la apófisis mastoides",
+    "sinonimos": ["otitis", "otitis media", "infeccion de oido", "dolor de oido"]
+  }
+]

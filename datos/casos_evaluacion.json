@@ -1,0 +1,348 @@
+[
+  {
+    "id": "caso_01",
+    "titulo": "Paciente masculino con descompensación metabólica y dolor abdominal",
+    "texto": "Paciente masculino de 58 años con antecedentes de HTA y DM2 en tratamiento irregular. Acude a emergencia por presentar dolor abd difuso de 48 horas de evolución, asociado a náuseas y vómito en dos ocasiones. Al examen físico: abdomen blando, doloroso a la palpación en epigastrio, sin signos de irritación peritoneal. Niega fiebre y no refiere diarrea. Glucemia capilar: 245 mg/dL. Se confirma gastritis aguda y descompensación glucémica.",
+    "codigos_esperados": [
+      {
+        "codigo": "I10",
+        "descripcion": "Hipertensión esencial (primaria)",
+        "estado": "CONFIRMADO",
+        "evidencia": "antecedentes de HTA"
+      },
+      {
+        "codigo": "E11.9",
+        "descripcion": "Diabetes mellitus tipo 2, sin mención de complicación",
+        "estado": "CONFIRMADO",
+        "evidencia": "DM2 en tratamiento irregular"
+      },
+      {
+        "codigo": "K29.7",
+        "descripcion": "Gastritis, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "Se confirma gastritis aguda"
+      },
+      {
+        "codigo": "R11",
+        "descripcion": "Náusea y vómito",
+        "estado": "CONFIRMADO",
+        "evidencia": "náuseas y vómito en dos ocasiones"
+      },
+      {
+        "codigo": "R50.9",
+        "descripcion": "Fiebre, no especificada",
+        "estado": "NEGADO",
+        "evidencia": "Niega fiebre"
+      },
+      {
+        "codigo": "A09",
+        "descripcion": "Gastroenteritis y colitis de origen no especificado",
+        "estado": "NEGADO",
+        "evidencia": "no refiere diarrea"
+      }
+    ]
+  },
+  {
+    "id": "caso_02",
+    "titulo": "Cuadro respiratorio agudo en adulto mayor con descarte de neumonía",
+    "texto": "Mujer de 72 años con antecedentes de EPOC y tabaquismo activo. Consulta por tos seca persistente y disnea de moderados esfuerzos de 3 días de evolución. Refiere cefalea leve. Se realiza radiografía de tórax en la cual se descarta neumonía y no hay consolidaciones. Se concluye bronquitis aguda sobreagregada. Niega dolor en el pecho.",
+    "codigos_esperados": [
+      {
+        "codigo": "J44.9",
+        "descripcion": "Enfermedad pulmonar obstructiva crónica, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "antecedentes de EPOC"
+      },
+      {
+        "codigo": "J20.9",
+        "descripcion": "Bronquitis aguda, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "Se concluye bronquitis aguda"
+      },
+      {
+        "codigo": "R05",
+        "descripcion": "Tos",
+        "estado": "CONFIRMADO",
+        "evidencia": "tos seca persistente"
+      },
+      {
+        "codigo": "R06.0",
+        "descripcion": "Disnea",
+        "estado": "CONFIRMADO",
+        "evidencia": "disnea de moderados esfuerzos"
+      },
+      {
+        "codigo": "R51",
+        "descripcion": "Cefalea",
+        "estado": "CONFIRMADO",
+        "evidencia": "cefalea leve"
+      },
+      {
+        "codigo": "J18.9",
+        "descripcion": "Neumonía, no especificada",
+        "estado": "NEGADO",
+        "evidencia": "se descarta neumonía"
+      },
+      {
+        "codigo": "R07.4",
+        "descripcion": "Dolor en el pecho, no especificado",
+        "estado": "NEGADO",
+        "evidencia": "Niega dolor en el pecho"
+      }
+    ]
+  },
+  {
+    "id": "caso_03",
+    "titulo": "Sospecha de apendicitis aguda en paciente joven",
+    "texto": "Joven de 21 años acude por dolor abdominal localizado en fosa ilíaca derecha (FID), de inicio periumbilical hace 12 horas. Al examen: signo de Blumberg positivo, febril con 38.3 °C. Cuadro clínico compatible con apendicitis aguda. Se descarta ITU tras examen de orina negativo. Niega vómitos.",
+    "codigos_esperados": [
+      {
+        "codigo": "K35.8",
+        "descripcion": "Apendicitis aguda, otra y la no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "compatible con apendicitis aguda"
+      },
+      {
+        "codigo": "R50.9",
+        "descripcion": "Fiebre, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "febril con 38.3 °C"
+      },
+      {
+        "codigo": "R10.4",
+        "descripcion": "Otros dolores abdominales y los no especificados",
+        "estado": "CONFIRMADO",
+        "evidencia": "dolor abdominal localizado en fosa ilíaca derecha"
+      },
+      {
+        "codigo": "N39.0",
+        "descripcion": "Infección del tracto urinario, sitio no especificado",
+        "estado": "NEGADO",
+        "evidencia": "Se descarta ITU"
+      },
+      {
+        "codigo": "R11",
+        "descripcion": "Náusea y vómito",
+        "estado": "NEGADO",
+        "evidencia": "Niega vómitos"
+      }
+    ]
+  },
+  {
+    "id": "caso_04",
+    "titulo": "Infección de vías urinarias en mujer adulta",
+    "texto": "Paciente femenina de 34 años acude a consulta por disuria, polaquiuria y dolor lumbar bajo de 4 días de evolución. Examen de orina muestra leucocituria y bacteriuria abundante, confirmando infección de vías urinarias (ITU). Al momento sin fiebre y niega hematuria.",
+    "codigos_esperados": [
+      {
+        "codigo": "N39.0",
+        "descripcion": "Infección del tracto urinario, sitio no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "infección de vías urinarias (ITU)"
+      },
+      {
+        "codigo": "M54.5",
+        "descripcion": "Lumbago no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "dolor lumbar bajo"
+      },
+      {
+        "codigo": "R50.9",
+        "descripcion": "Fiebre, no especificada",
+        "estado": "NEGADO",
+        "evidencia": "sin fiebre"
+      }
+    ]
+  },
+  {
+    "id": "caso_05",
+    "titulo": "Sospecha de síndrome coronario agudo vs dolor osteomuscular",
+    "texto": "Varón de 64 años con HTA y dislipidemia. Acude por dolor torácico opresivo desencadenado tras esfuerzo físico. Electrocardiograma sin elevación de segmento ST y enzimas cardíacas normales; se descarta infarto agudo de miocardio (IAM). Se diagnostica crisis de angustia y contractura muscular torácica. Niega disnea.",
+    "codigos_esperados": [
+      {
+        "codigo": "I10",
+        "descripcion": "Hipertensión esencial (primaria)",
+        "estado": "CONFIRMADO",
+        "evidencia": "con HTA"
+      },
+      {
+        "codigo": "E78.5",
+        "descripcion": "Hiperlipidemia, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "dislipidemia"
+      },
+      {
+        "codigo": "F41.9",
+        "descripcion": "Trastorno de ansiedad, no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "crisis de angustia"
+      },
+      {
+        "codigo": "M79.1",
+        "descripcion": "Mialgia",
+        "estado": "CONFIRMADO",
+        "evidencia": "contractura muscular torácica"
+      },
+      {
+        "codigo": "I21.9",
+        "descripcion": "Infarto agudo del miocardio, sin otra especificación",
+        "estado": "NEGADO",
+        "evidencia": "se descarta infarto agudo de miocardio (IAM)"
+      },
+      {
+        "codigo": "R06.0",
+        "descripcion": "Disnea",
+        "estado": "NEGADO",
+        "evidencia": "Niega disnea"
+      }
+    ]
+  },
+  {
+    "id": "caso_06",
+    "titulo": "Gastroenteritis aguda con deshidratación leve",
+    "texto": "Niño de 8 años traído por presentar múltiples deposiciones líquidas (6 en 24h), vómitos y fiebre de 38.5 °C. Se diagnostica gastroenteritis aguda de presunto origen viral. Abdomen blando, no doloroso a la palpación profunda; se descarta abdomen agudo quirúrgico y niega sangre en heces.",
+    "codigos_esperados": [
+      {
+        "codigo": "A09",
+        "descripcion": "Gastroenteritis y colitis de origen no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "gastroenteritis aguda"
+      },
+      {
+        "codigo": "R11",
+        "descripcion": "Náusea y vómito",
+        "estado": "CONFIRMADO",
+        "evidencia": "vómitos"
+      },
+      {
+        "codigo": "R50.9",
+        "descripcion": "Fiebre, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "fiebre de 38.5 °C"
+      },
+      {
+        "codigo": "R10.4",
+        "descripcion": "Otros dolores abdominales y los no especificados",
+        "estado": "NEGADO",
+        "evidencia": "se descarta abdomen agudo quirúrgico"
+      }
+    ]
+  },
+  {
+    "id": "caso_07",
+    "titulo": "Traumatismo craneoencefálico leve por caída",
+    "texto": "Paciente de 45 años sufre caída desde propia altura con golpe en la región frontal de la cabeza. Presenta cefalea moderada y contusión superficial en frente. Tomografía de cráneo sin lesiones hemorrágicas; se descarta traumatismo intracraneal grave. No presenta pérdida de conciencia ni vómitos.",
+    "codigos_esperados": [
+      {
+        "codigo": "S00.9",
+        "descripcion": "Traumatismo superficial de la cabeza, parte no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "contusión superficial en frente"
+      },
+      {
+        "codigo": "R51",
+        "descripcion": "Cefalea",
+        "estado": "CONFIRMADO",
+        "evidencia": "cefalea moderada"
+      },
+      {
+        "codigo": "S06.0",
+        "descripcion": "Conmoción cerebral",
+        "estado": "NEGADO",
+        "evidencia": "se descarta traumatismo intracraneal grave"
+      },
+      {
+        "codigo": "R11",
+        "descripcion": "Náusea y vómito",
+        "estado": "NEGADO",
+        "evidencia": "No presenta pérdida de conciencia ni vómitos"
+      }
+    ]
+  },
+  {
+    "id": "caso_08",
+    "titulo": "Control rutinario en paciente con comorbilidades crónicas",
+    "texto": "Paciente femenina de 61 años acude a control clínico de medicina interna. Conocida con diagnóstico previo de hipotiroidismo y obesidad grado 1. Refiere adecuado apego a levotiroxina. Al interrogatorio dirigido niega dolor precordial, niega disnea y niega mareos. Presión arterial controlada: 125/80 mmHg.",
+    "codigos_esperados": [
+      {
+        "codigo": "E03.9",
+        "descripcion": "Hipotiroidismo, no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "diagnóstico previo de hipotiroidismo"
+      },
+      {
+        "codigo": "E66.9",
+        "descripcion": "Obesidad, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "obesidad grado 1"
+      },
+      {
+        "codigo": "R07.4",
+        "descripcion": "Dolor en el pecho, no especificado",
+        "estado": "NEGADO",
+        "evidencia": "niega dolor precordial"
+      },
+      {
+        "codigo": "R06.0",
+        "descripcion": "Disnea",
+        "estado": "NEGADO",
+        "evidencia": "niega disnea"
+      },
+      {
+        "codigo": "R42",
+        "descripcion": "Mareo y desvanecimiento",
+        "estado": "NEGADO",
+        "evidencia": "niega mareos"
+      }
+    ]
+  },
+  {
+    "id": "caso_09",
+    "titulo": "Crisis asmática moderada en adolescente",
+    "texto": "Adolescente de 16 años con antecedente de asma bronquial acude por dificultad respiratoria y sibilancias audibles tras exposición a polvo. Se auscultan sibilancias bilaterales. Se diagnostica crisis asmática. Ausencia de fiebre y niega expectoración purulenta. Saturación O2: 93%.",
+    "codigos_esperados": [
+      {
+        "codigo": "J45.9",
+        "descripcion": "Asma, no especificada",
+        "estado": "CONFIRMADO",
+        "evidencia": "diagnostica crisis asmática"
+      },
+      {
+        "codigo": "R06.0",
+        "descripcion": "Disnea",
+        "estado": "CONFIRMADO",
+        "evidencia": "dificultad respiratoria"
+      },
+      {
+        "codigo": "R50.9",
+        "descripcion": "Fiebre, no especificada",
+        "estado": "NEGADO",
+        "evidencia": "Ausencia de fiebre"
+      }
+    ]
+  },
+  {
+    "id": "caso_10",
+    "titulo": "Lumbago mecánico agudo post esfuerzo",
+    "texto": "Trabajador de 40 años presenta dolor lumbar intenso tras levantar carga pesada en su jornada laboral. Marcha antiálgica, contractura paravertebral lumbar palpable. Se concluye lumbago agudo de origen mecánico. Reflejos conservados, sin compromiso neurológico; se descarta hernia discal con radiculopatía. Niega incontinencia urinaria.",
+    "codigos_esperados": [
+      {
+        "codigo": "M54.5",
+        "descripcion": "Lumbago no especificado",
+        "estado": "CONFIRMADO",
+        "evidencia": "concluye lumbago agudo"
+      },
+      {
+        "codigo": "M79.1",
+        "descripcion": "Mialgia",
+        "estado": "CONFIRMADO",
+        "evidencia": "contractura paravertebral lumbar"
+      },
+      {
+        "codigo": "N39.0",
+        "descripcion": "Infección del tracto urinario, sitio no especificado",
+        "estado": "NEGADO",
+        "evidencia": "Niega incontinencia urinaria"
+      }
+    ]
+  }
+]
