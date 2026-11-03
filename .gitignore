@@ -31,7 +31,7 @@ desktop.ini
 .idea/
 
 # Recursos internos del estudiante (no suben al repositorio publico/docente)
-recursos_estudiante/
+recursos/
 docs
 
 # Video demostrativo si excede limites de Git (se entrega via enlace segun rubrica)
