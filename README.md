@@ -198,7 +198,7 @@ codificamed/
 Evaluación ejecutada sobre el conjunto de 10 casos clínicos del *Gold Standard* (46 diagnósticos clínicos anotados):
 
 | Métrica | Ollama Local (`llama3.1:latest`) | Google Gemini (`gemini-3.8-flash`) |
-| :--- | :---: | :---: | :---: |
+| :--- | :---: | :---: |
 | **Precisión (Precision)** | **88.20%** | **93.40%** |
 | **Exhaustividad (Recall)** | **84.78%** | **90.20%** |
 | **Valor-F1 (F1-Score)** | **86.45%** | **91.76%** |
