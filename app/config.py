@@ -29,10 +29,10 @@ class Settings:
         self.gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip()
 
         self.openai_api_key = os.getenv("OPENAI_API_KEY", "").strip()
-        self.openai_model = os.getenv("OPENAI_MODEL", "gpt-6.1-terra").strip()
+        self.openai_model = os.getenv("OPENAI_MODEL", "gpt-6.1-sol").strip()
 
         self.anthropic_api_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
-        self.claude_model = os.getenv("CLAUDE_MODEL", "sonnet-5.5").strip()
+        self.claude_model = os.getenv("CLAUDE_MODEL", "opus-5.5").strip()
 
         # Rutas de datos
         self.datos_dir = BASE_DIR / "datos"

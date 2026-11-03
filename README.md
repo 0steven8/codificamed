@@ -117,11 +117,11 @@ GEMINI_MODEL=gemini-3.8-flash
 
 # OpenAI ChatGPT (opcional)
 OPENAI_API_KEY=
-OPENAI_MODEL=gpt-6.1-terra
+OPENAI_MODEL=gpt-6.1-sol
 
 # Anthropic Claude (opcional)
 ANTHROPIC_API_KEY=
-CLAUDE_MODEL=sonnet-5.5
+CLAUDE_MODEL=opus-5.5
 
 # Servidor Web
 HOST=0.0.0.0

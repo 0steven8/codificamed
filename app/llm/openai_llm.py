@@ -12,7 +12,7 @@ class ProveedorOpenAI(ProveedorLLM):
 
     def __init__(self, api_key: str | None = None, modelo: str | None = None) -> None:
         self.api_key = api_key or settings.openai_api_key
-        self.modelo = modelo or settings.openai_model or "gpt-6.1-terra"
+        self.modelo = modelo or settings.openai_model or "gpt-6.1-sol"
 
     def _obtener_candidatos(self) -> list[str]:
         # Modelos OpenAI: GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Luna

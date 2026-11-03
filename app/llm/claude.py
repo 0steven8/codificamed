@@ -11,7 +11,7 @@ class ProveedorClaude(ProveedorLLM):
 
     def __init__(self, api_key: str | None = None, modelo: str | None = None) -> None:
         self.api_key = api_key or settings.anthropic_api_key
-        self.modelo = modelo or settings.claude_model or "sonnet-5.5"
+        self.modelo = modelo or settings.claude_model or "opus-5.5"
 
     def _obtener_candidatos(self) -> list[str]:
         # Modelos Claude: Opus 5.5, Sonnet 5.5, Haiku 5.5
