@@ -16,16 +16,14 @@ class ProveedorGemini(ProveedorLLM):
         self.modelo = modelo or settings.gemini_model or "gemini-3.8-flash"
 
     def _obtener_candidatos(self) -> list[str]:
-        # Prioridad alineada con Google AI Studio: 3.8 Flash, 3.5 Flash-Lite, 3.1 Pro
+        # Modelos Gemini: 3.8 Flash, 3.5 Flash-Lite, 3.1 Pro
         m = (self.modelo or "").lower()
         if "lite" in m or "3.5" in m:
-            return ["gemini-3.5-flash-lite", "gemini-3.8-flash", "gemini-3.1-pro-preview", "gemini-flash-latest"]
+            return ["gemini-3.5-flash-lite", "gemini-3.8-flash", "gemini-3.1-pro-preview"]
         elif "pro" in m or "3.1" in m:
-            return ["gemini-3.1-pro-preview", "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-pro-latest"]
-        elif "argon" in m or "4" in m:
-            return ["gemini-4-argon", "gemini-3.8-flash", "gemini-3.5-flash-lite"]
+            return ["gemini-3.1-pro-preview", "gemini-3.8-flash", "gemini-3.5-flash-lite"]
         else:
-            return ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-pro-preview", "gemini-flash-latest", "gemini-4-argon"]
+            return ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.1-pro-preview"]
 
     def codificar(self, prompt_sistema: str, prompt_usuario: str, esquema: dict) -> dict:
         if not self.api_key:
