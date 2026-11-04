@@ -60,7 +60,7 @@ El script realiza automáticamente las siguientes acciones:
 
 1. **Clonar o descargar el repositorio y situarse en el directorio raíz:**
    ```bash
-   cd "Ejercicio 10"
+   cd "codificamed"
    ```
 
 2. **Crear y activar el entorno virtual:**
@@ -102,28 +102,30 @@ El script realiza automáticamente las siguientes acciones:
 El archivo `.env.example` contiene las variables de configuración sin credenciales reales expuestas:
 
 ```ini
-# Proveedor predeterminado: ollama, gemini, openai o claude
+# Proveedor por defecto: "ollama", "gemini", "openai", "claude"
 LLM_PROVIDER=ollama
 
-# Configuracion de Ollama Local
+# --- CONFIGURACION OLLAMA (LOCAL) ---
 OLLAMA_HOST=http://localhost:11434
+# Modelo local (llama3.1:latest, mistral:latest o qwen2.5-coder:latest)
 OLLAMA_MODEL=llama3.1:latest
 OLLAMA_NUM_CTX=2048
 OLLAMA_TIMEOUT=600
 
-# Google Gemini (opcional)
+# --- CONFIGURACION APIS EN LA NUBE (OPCIONALES) ---
+# Google Gemini (gemini-3.8-flash, gemini-3.1-pro, gemini-3.5-flash-lite)
 GEMINI_API_KEY=
 GEMINI_MODEL=gemini-3.8-flash
 
-# OpenAI ChatGPT (opcional)
+# OpenAI (gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna)
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-6.1-sol
 
-# Anthropic Claude (opcional)
+# Anthropic Claude (opus-5.5, sonnet-5.5, haiku-5.5)
 ANTHROPIC_API_KEY=
 CLAUDE_MODEL=opus-5.5
 
-# Servidor Web
+# --- SERVIDOR WEB ---
 HOST=0.0.0.0
 PUERTO=8000
 ```
